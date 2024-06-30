@@ -10,6 +10,9 @@ const port = 5000;
 //middleware apply for all request 
 app.use(cors());
 
+//middleware for parsing json data
+app.use(express.json());
+
 //connect database
 connectDB();
 
