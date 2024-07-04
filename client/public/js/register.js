@@ -8,7 +8,7 @@ async function handleRegister() {
         const response = await axios.post('http://localhost:5000/api/auth/register', { username: username, email: email, password: password })
         if (response.status === 200) {
             alert('Successfully registered');
-            window.location.href = '/client/login.html';
+            window.location.href = '/login.html';
         } else {
             // Lấy thông điệp lỗi từ JSON
             const error = response.data.error || 'An unknown error occurred';
