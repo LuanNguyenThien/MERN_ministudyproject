@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.logo-text-container {
+  display: flex;
+  align-items: center; /* Căn giữa các items theo chiều dọc */
+  justify-content: center; /* Căn giữa các items theo chiều ngang nếu cần */
+}
+
+.App-logo {
+  max-height: 50px; /* Điều chỉnh kích thước này cho phù hợp */
+  margin-right: 10px; /* Khoảng cách giữa logo và văn bản */
+}
+
+.login-box-msg {
+  margin: 0; /* Loại bỏ margin mặc định của thẻ p nếu cần */
+  padding: 0; /* Loại bỏ padding mặc định của thẻ p nếu cần */
+}
