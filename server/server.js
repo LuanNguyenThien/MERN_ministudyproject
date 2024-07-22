@@ -6,7 +6,8 @@ const connectDB = require('./Services/ConnectDBService.js');
 const userRouter = require('./Router/UserRoute.js');
 const authRouter = require('./Router/AuthRoute.js');
 
-const port = 5000;
+
+require('dotenv').config();
 //middleware apply for all request 
 app.use(cors());
 
@@ -20,6 +21,6 @@ connectDB();
 app.use('/user', userRouter);
 app.use('/api/auth', authRouter);
 
-app.listen(port, function () {
-  console.log(`Server running at http://localhost:${port}/`);
+app.listen(process.env.PORT, function () {
+  console.log(`Server running at http://localhost:${process.env.PORT}/`);
 });

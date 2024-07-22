@@ -1,5 +1,4 @@
 // File: register.js
-
 // Import axios for making HTTP requests
 import axios from 'axios';
 

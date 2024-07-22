@@ -1,13 +1,25 @@
 // Trong file Login.js
-import React from 'react';
+import React, {useState} from 'react';
 import './css/App.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     // Hàm xử lý khi form được submit
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
       // Xử lý đăng nhập ở đây
+      try {
+        const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+        if (response.status === 200) {
+           // Gọi callback với phản hồi
+        }
+      } catch (error) {
+        const message = error.response && error.response.data ? error.response.data.error : 'An unknown error occurred';
+        console.error(message);
+      }
     };
   
     return (
@@ -22,7 +34,9 @@ function Login() {
   
               <form onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
-                  <input type="email" className="form-control" placeholder="Email" />
+                  <input
+                    value={email} onChange={(e) => setEmail(e.target.value)}
+                    type="email" className="form-control" placeholder="Email" />
                   <div className="input-group-append">
                     <div className="input-group-text">
                       <span className="fas fa-envelope"></span>
@@ -30,7 +44,9 @@ function Login() {
                   </div>
                 </div>
                 <div className="input-group mb-3">
-                  <input type="password" className="form-control" placeholder="Password" />
+                  <input 
+                    value={password} onChange={(e) => setPassword(e.target.value)}  
+                    type="password" className="form-control" placeholder="Password" />
                   <div className="input-group-append">
                     <div className="input-group-text">
                       <span className="fas fa-lock"></span>
